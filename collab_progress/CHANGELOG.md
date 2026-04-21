@@ -30,6 +30,30 @@ Entry Template
 
 ---
 
+## [Implement]: Author eliciting-project-goals SKILL.md (Phase 1 body)
+- Date: 2026-04-21
+- Time (IST): 21:07 IST
+- Branch/PR: main
+- Files Changed (high level):
+  `skills/eliciting-project-goals/SKILL.md` (stub → full body, 239 lines),
+  `collab_progress/`
+- Details: See [author-eliciting-project-goals-skill-21-04-2026.md](author-eliciting-project-goals-skill-21-04-2026.md)
+- Verification: frontmatter unchanged; all non-table lines ≤80 chars
+  (`awk` check); file length 239 lines within 180–240 target; no
+  scripted questions or dialogue flowchart leaked in; rationalization
+  table present (9 entries) per `AGENTS.md` discipline-enforcing-skill
+  rule. RED/GREEN single-turn baseline PASS: RED subagent (no skill)
+  stacked 5–6 questions and proposed a full stack + scaffold on
+  turn 1; GREEN subagent (skill loaded) asked 1 "why"-anchored
+  question, proposed nothing, and held the gate. No new
+  rationalisations surfaced; no skill edits required. Multi-turn
+  baseline logged as a future follow-up.
+- Notes: `skills/using-beam/SKILL.md`, `skills/scaffolding-repo/SKILL.md`,
+  and `skills/writing-agents-md/SKILL.md` remain stubs. Working tree
+  left dirty for user review.
+
+---
+
 ## [Implement]: Trim README & SPEC JSON templates; author writing-technical-spec SKILL.md
 - Date: 2026-04-21
 - Time (IST): 19:30 IST
