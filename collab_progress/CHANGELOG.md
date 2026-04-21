@@ -30,6 +30,26 @@ Entry Template
 
 ---
 
+## [Implement]: Author using-beam SKILL.md (Master Orchestrator body)
+- Date: 2026-04-21
+- Time (IST): 21:35 IST
+- Branch/PR: main
+- Files Changed (high level): `skills/using-beam/SKILL.md`
+- Details: See [author-using-beam-skill-21-04-2026.md](author-using-beam-skill-21-04-2026.md)
+- Verification: frontmatter unchanged; flowchart included; session visibility rules created; explicit handoffs mapped to child skills.
+- Notes: Master bootstrap skill is fully specified and ready to orchestrate initialization.
+
+## [Implement]: Author scaffolding-repo SKILL.md (Phase 2 body)
+- Date: 2026-04-21
+- Time (IST): 21:21 IST
+- Branch/PR: main
+- Files Changed (high level): `skills/scaffolding-repo/SKILL.md` (stub → full body)
+- Details: See [author-scaffolding-repo-skill-21-04-2026.md](author-scaffolding-repo-skill-21-04-2026.md)
+- Verification: frontmatter unchanged; hard-gate and rationalization table added; instructions bind strictly to input JSON templates; no code implementation allowed. Agent-behavior baseline test (RED/GREEN) deferred to a follow-up.
+- Notes: Phase 2 skill is now fully specified.
+
+---
+
 ## [Implement]: Author eliciting-project-goals SKILL.md (Phase 1 body)
 - Date: 2026-04-21
 - Time (IST): 21:07 IST
