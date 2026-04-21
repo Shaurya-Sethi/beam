@@ -1,0 +1,30 @@
+{
+  "document_info": {
+    "filename": "docs/SPEC.md",
+    "target_word_count": "600-1200 words",
+    "tone": "Technical, precise",
+    "format": "Markdown"
+  },
+  "template_structure": [
+    {
+      "section_title": "Overview",
+      "mode": "requirements",
+      "content_requirements": "One paragraph covering context, scope, and why the system exists. State what the system is and the problem it addresses. Keep it succinct; link to background material rather than recapping it."
+    },
+    {
+      "section_title": "Goals & Non-Goals",
+      "mode": "requirements",
+      "content_requirements": "Bulleted list of explicit goals, followed by a separate bulleted list of explicit non-goals. Non-goals are things that could reasonably be goals but are intentionally excluded - not negated requirements like 'the system shouldn't crash'. Omitting non-goals invites scope creep."
+    },
+    {
+      "section_title": "Design / Architecture Overview",
+      "mode": "requirements",
+      "content_requirements": "High-level description of the components that make up the system and how they interact. Include a diagram (ASCII or Mermaid) when the relationships are non-trivial. Focus on the trade-offs made in the design, not implementation detail. This section is the reason the spec exists."
+    },
+    {
+      "section_title": "Open Questions",
+      "mode": "requirements",
+      "content_requirements": "Unresolved design decisions or areas needing further research. Each item should state the question and, if known, who is responsible for resolving it. If there are none at the time of writing, include the section with a single line stating so - the spec is a living document and this section is expected to evolve."
+    }
+  ]
+}
