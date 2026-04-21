@@ -9,7 +9,7 @@ guide a four-phase repository initialization workflow:
 
 1. Goal elicitation (Q&A → `plan.md` + session todos)
 2. Repo scaffolding (`collab_progress/` + minimal starter structure)
-3. `README.md` and `AGENTS.md` generation from templates
+3. `AGENTS.md` generation from `assets/agents_config.json`
 4. Technical spec (web research + `docs/SPEC.md`)
 
 There is no compiled code in this project. The entire deliverable is
@@ -19,10 +19,6 @@ and the coding agents that load and execute them.
 [sp]: https://github.com/obra/superpowers
 
 ## Project Structure & Module Organization
-
-The structure below is **aspirational**: only `assets/` and
-`collab_progress/` contain real content today. The `skills/` tree and
-`docs/SPEC.md` will be filled in as each skill is written.
 
 ```text
 .
@@ -42,15 +38,15 @@ The structure below is **aspirational**: only `assets/` and
     ├── eliciting-project-goals/
     │   └── SKILL.md                 # Phase 1: Q&A → plan.md + todos
     ├── scaffolding-repo/
-    │   └── SKILL.md                 # Phase 2: collab_progress +
-    │                                # starter structure
+    │   ├── SKILL.md                 # Phase 2: collab_progress +
+    │   │                            # starter structure + README.md
+    │   └── readme-template.json     # README.md section structure
     ├── writing-agents-md/
-    │   ├── SKILL.md                 # Phase 3a: fills AGENTS.md from
-    │   │                            # assets/agents_config.json
-    │   └── readme-template.md       # Phase 3b: README.md structure
+    │   └── SKILL.md                 # Phase 3: fills AGENTS.md from
+    │                                # assets/agents_config.json
     └── writing-technical-spec/
         ├── SKILL.md                 # Phase 4: web research + SPEC.md
-        └── spec-template.md         # SPEC.md section structure
+        └── spec-template.json       # SPEC.md section structure
 ```
 
 ## Build, Test, and Development Commands
@@ -86,7 +82,7 @@ SKILL frontmatter, not code.
 - **Skill directory names:** kebab-case, gerund-first
   (`eliciting-project-goals`, `writing-technical-spec`).
 - **Template / reference files inside a skill:** lowercase with hyphens
-  (`readme-template.md`, `spec-template.md`).
+  (`readme-template.json`, `spec-template.json`).
 - **JSON templates in `assets/`:** stable schema; document any field
   changes in `collab_progress/`.
 

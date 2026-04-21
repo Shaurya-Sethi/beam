@@ -40,7 +40,7 @@ your agent's skills directory.
 **Codex CLI / pi**
 
 ```bash
-git clone https://github.com/<you>/beam ~/.agents/skills/beam
+git clone https://github.com/Shaurya-Sethi/beam ~/.agents/skills/beam
 # or, to keep the source elsewhere:
 ln -s /path/to/beam/skills ~/.agents/skills/beam
 ```
@@ -48,13 +48,13 @@ ln -s /path/to/beam/skills ~/.agents/skills/beam
 **Claude Code**
 
 ```bash
-git clone https://github.com/<you>/beam ~/.claude/skills/beam
+git clone https://github.com/Shaurya-Sethi/beam ~/.claude/skills/beam
 ```
 
 **Future (canonical):**
 
 ```bash
-pi install git:github.com/<you>/beam
+pi install git:github.com/Shaurya-Sethi/beam
 ```
 
 The `pi install` path will land once Beam is published; until then the
