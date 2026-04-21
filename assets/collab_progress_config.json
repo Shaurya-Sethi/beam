@@ -1,0 +1,34 @@
+{
+  "directory_structure": {
+    "name": "collab_progress",
+    "type": "directory",
+    "children": [
+      {
+        "name": "CHANGELOG.md",
+        "type": "file"
+      },
+      {
+        "name": "PROTOCOL.md",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "content": "# <Repo Name> Changelog (collab_progress index)\n\n\n## Purpose\n- This file is the single, ordered index of all progress notes under collab_progress.\n- It makes recent changes easy to find and links each entry to the detailed Markdown note(s).\n\n## Rules\n- Always append a new entry at the TOP (after this Rules section) after every task/change (feature, fix, refactor, tests, docs).\n- Include **date** and **time in the user's detected local timezone**. Example date: `2026-04-08`; example time: `21:18 PDT`. You may use full ISO 8601 with offset instead, e.g. `2026-04-08T21:18:00-07:00`.\n  - Shell (Linux/macOS): `date '+%Y-%m-%d %H:%M %Z'`\n\n- Keep the Summary concise; link to detailed files for depth.\n- Reference the branch/PR when applicable.\n- Do not remove or rewrite past entries; corrections should be a new entry.\n\nEntry Template\n- Copy/paste and fill all fields. Keep newest entries at the top.\n\n```\n## [Title]: Short description of the change\n- Date: YYYY-MM-DD\n- Time (Local TZ): HH:MM <TZ>\n- Branch/PR: <branch-name> (<PR link> if available)\n- Files Changed (high level): <modules or folders>\n- Details: See <relative-links-to-detailed-notes.md>\n- Verification: <tests run, tools, results>\n- Notes: <optional follow-ups/known issues>\n```"
+    },
+    {
+      "path": "PROTOCOL.md",
+      "content": "# Progress Tracking Protocol\n\n## Purpose\nTo ensure all code changes are transparently tracked and reviewable, every implementation or refactor must be accompanied by a progress note in the collab_progress folder.\n\n## Workflow\n\n1. **After Each Change:**\n    - Upon completing any significant code change (feature, bugfix, refactor, or test), create a new Markdown file in collab_progress.\n    - Name the file descriptively, including the date:  \n       `short-description-DD-MM-YYYY.md`\n    - Append a new entry at the TOP of `collab_progress/CHANGELOG.md` with date/time and links to your detailed note(s). Use the **user's detected local timezone** for the time field.\n\n2. **Progress Note Format:**\n   - Each note should be concise and include:\n     - **Summary:** What was done and why.\n     - **Files Changed:** List of files or modules affected.\n     - **Rationale:** Brief reasoning for the change.\n     - **Verification:** How the change was tested or validated.\n     - **Issues:** Any known issues or limitations.\n     - **Next Steps:** Any follow-up actions or open questions.\n\n3. **Deltas, Not Duplicates:**\n   - Focus on what changed since the last note, not a restatement of the entire context.\n\n4. **Review & Collaboration:**\n\n## Quick Add Checklist\n- [ ] Create/update detailed note in `collab_progress/` with the prescribed sections\n- [ ] Add changelog entry at the TOP of `collab_progress/CHANGELOG.md` (include date and time in the **user's detected local timezone**, branch/PR, links to notes, verification)\n- [ ] Run tests and include verification outcome\n   - These notes serve as a shared log for both AI and human collaborators to review, discuss, and plan next actions."
+    },
+    {
+      "path": "README.md",
+      "content": "# Collaboration & Progress Tracker\n\nThis folder tracks implementation progress and provides a shared space for AI agents and humans to review changes to the repo.\n\nConventions:\n- Add progress notes as Markdown files named with a descriptive title and the date in dd-mm-yyyy format.\n- Keep entries concise: summary, files changed, rationale, verification status, and next steps.\n- Prefer deltas over restating prior context.\n- Maintain `CHANGELOG.md` as the top-level, chronological index: after every task, append a new entry at the top with date, time in the **user's detected local timezone**, and links to the detailed note(s). See `PROTOCOL.md` and the template in `CHANGELOG.md`."
+    }
+  ]
+}

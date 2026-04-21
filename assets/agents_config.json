@@ -1,0 +1,56 @@
+{
+    "document_info": {
+      "filename": "AGENTS.md",
+      "title": "Repository Guidelines",
+      "target_word_count": "200-400 words",
+      "tone": "Professional, instructional",
+      "format": "Markdown"
+    },
+    "template_structure": [
+      {
+        "section_title": "Project Purpose & High-Level Overview",
+        "mode": "requirements",
+        "content_requirements": "Describe the project's core purpose, target audience, and provide a high-level overview of the project."
+      },
+      {
+        "section_title": "Project Structure & Module Organization",
+        "mode": "requirements",
+        "content_requirements": "Outline the location of source code, tests, and assets. Provide a directory tree along with comments describing purpose of each file/folder."
+      },
+      {
+        "section_title": "Build, Test, and Development Commands",
+        "mode": "requirements",
+        "content_requirements": "List key commands for local development and explain their purpose."
+      },
+      {
+        "section_title": "Coding Style & Naming Conventions",
+        "mode": "requirements",
+        "content_requirements": "Specify indentation, language-specific preferences, and linting tools."
+      },
+      {
+        "section_title": "Testing Guidelines",
+        "mode": "requirements",
+        "content_requirements": "Identify frameworks, naming conventions for test files, and coverage expectations."
+      },
+      {
+        "section_title": "Commit & Pull Request Guidelines",
+        "mode": "requirements",
+        "content_requirements": "Summarize commit message patterns and PR requirements (descriptions, links)."
+      },
+      {
+        "section_title": "Documentation & Knowledge Sources",
+        "mode": "exact",
+        "exact_content": "## Documentation & Knowledge Sources\n\nALWAYS reference official documentation for libraries/frameworks before implementing anything new or changing existing behavior.\n\n### **Primary Sources**:\n\n1. **[docs/SPEC.md](docs/SPEC.md)** for project scope, architecture, and non-goals before designing or implementing product behavior.\n2. Official library and framework documentation on the internet. Use your built-in `web search` tools.\n3. If all else fails, browse dependency source locally (for example through your package manager cache, a vendored directory, or published source tarballs and repository tags). Ask the user to add or update dependencies if needed so the relevant code is available to you."
+      },
+      {
+        "section_title": "Collaboration & Progress Tracking Protocol",
+        "mode": "exact",
+        "exact_content": "## Collaboration & Progress Tracking Protocol\n\n**Before starting any new task:**\n- The `collab_progress` folder exists to track and understand the current state, recent changes, and overall repo progress.\n- Decide whether reviewing these is necessary for the given task. Then `ls` the folder contents to view file names and check relevant files if you so decide.\n\n**After completing any significant change:**\n- Follow the instructions in `collab_progress/PROTOCOL.md` to document your work.\n\n**This protocol is mandatory for all contributors and must be followed for every codebase change.**"
+      },
+      {
+        "section_title": "Full-Code Ownership & Test-Driven Development (TDD) Mandate",
+        "mode": "exact",
+        "exact_content": "## Full-Code Ownership & Test-Driven Development (TDD) Mandate\n\n> **You are the sole implementor for this repository.**\n>\n> * Treat the project as a green-field codebase:\n>   Write all source files, config, and docs needed to meet requirements.\n> * Follow strict TDD:\n>   - Write a failing automated test for any new behavior before writing production code, using this repository's standard test runner and layout.\n>   - Write minimal production code to pass the test.\n>   - Refactor for clarity after passing.\n> * Maintain strong automated test coverage on new and changed behavior; add edge and corner-case tests for every feature, using the project's coverage tooling when it is configured."
+      }
+    ]
+  }
