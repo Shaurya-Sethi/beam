@@ -1,0 +1,35 @@
+{
+  "document_info": {
+    "filename": "README.md",
+    "target_word_count": "300-600 words",
+    "tone": "Friendly, developer-facing",
+    "format": "Markdown"
+  },
+  "template_structure": [
+    {
+      "section_title": "Project name & tagline",
+      "mode": "requirements",
+      "content_requirements": "H1 with the project name followed by a single-sentence tagline. Optionally include a badge line (CI, license, version) only if those assets actually exist for this project."
+    },
+    {
+      "section_title": "Overview",
+      "mode": "requirements",
+      "content_requirements": "2-4 sentences describing what the project does, the problem it solves, and the primary audience. This is what the reader sees first after the tagline; it must be self-contained enough to let them decide whether to keep reading."
+    },
+    {
+      "section_title": "Getting Started",
+      "mode": "requirements",
+      "content_requirements": "Minimal prerequisites and the fastest path to a working setup. Show the install command(s) and whatever single command proves the install worked. Keep this section short; deeper setup belongs in a dedicated optional section added per SKILL.md guidance."
+    },
+    {
+      "section_title": "Usage",
+      "mode": "requirements",
+      "content_requirements": "Smallest demonstration of actually invoking the project: one code block or one-line example. Cover the single most important workflow. Link out to further examples rather than expanding here."
+    },
+    {
+      "section_title": "License",
+      "mode": "requirements",
+      "content_requirements": "One-line license statement with a link to the LICENSE file."
+    }
+  ]
+}
