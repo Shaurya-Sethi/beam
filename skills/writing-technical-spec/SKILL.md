@@ -1,11 +1,9 @@
 ---
 name: writing-technical-spec
 description: >-
-  Use when beginning Phase 4 of the Beam workflow, or when the user asks for
-  a technical specification, design doc, SPEC.md, docs/SPEC.md, architecture
-  doc, or "spec the system" for a repository. Conducts targeted web research
-  on the project's core frameworks and authors docs/SPEC.md from
-  spec-template.json.
+  Use when beginning Phase 4 of the Beam workflow, or when the user asks
+  for a technical specification, design doc, SPEC.md, docs/SPEC.md,
+  architecture doc, or "spec the system" for a repository.
 ---
 
 # Writing a Technical Spec (Phase 4)
@@ -148,13 +146,18 @@ append the corresponding section, in this order (after Open Questions):
 
 ### Step 6 — Write `docs/SPEC.md` and update progress
 
-1. Write the assembled content to `docs/SPEC.md`. Hit the `target_word_count`
-   in `document_info` (600–1200 words) as a guide, not a quota.
-2. Update `collab_progress/` per `collab_progress/PROTOCOL.md`: create a
+1. Ensure the `docs/` directory exists at the repository root. If Phase 2
+   did not create it (the stack may not have needed one), create it now
+   (`mkdir -p docs` or equivalent) before writing.
+2. Write the assembled content to `docs/SPEC.md`. Hit the
+   `target_word_count` in `document_info` (600–1200 words) as a guide,
+   not a quota.
+3. Update `collab_progress/` per `collab_progress/PROTOCOL.md`: create a
    new progress note summarising what was specced and which optional
    sections were included (and deliberately excluded), and prepend a
-   `CHANGELOG.md` entry with IST time.
-3. Do not run `git add` or `git commit` unless the user explicitly asks.
+   `CHANGELOG.md` entry with the **user's detected local timezone** (see
+   `collab_progress/PROTOCOL.md`).
+4. Do not run `git add` or `git commit` unless the user explicitly asks.
 
 ## Hard rules
 
@@ -207,4 +210,5 @@ Before declaring the phase complete, confirm all of the following:
 - [ ] Inline citations exist for any design decision that leans on a web
       source.
 - [ ] A new progress note exists in `collab_progress/` and the CHANGELOG
-      has a new entry at the top, with IST time.
+      has a new entry at the top, using the user's detected local
+      timezone per `collab_progress/PROTOCOL.md`.

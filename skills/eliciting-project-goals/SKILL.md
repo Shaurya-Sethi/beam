@@ -1,9 +1,9 @@
 ---
 name: eliciting-project-goals
 description: >-
-  Use when beginning Phase 1 of the Beam workflow: run a structured Q&A
-  session with the user to produce plan.md and populate session todos before
-  any scaffolding or file generation begins.
+  Use when starting Phase 1 of the Beam workflow, or when a new repository
+  needs a `plan.md` before any scaffolding, AGENTS.md, or technical spec
+  work begins.
 ---
 
 # Eliciting Project Goals (Phase 1)
@@ -234,6 +234,8 @@ Before declaring Phase 1 complete, verify every item:
 - [ ] No section contains "TBD" or placeholder text; undecided items are
       in Open Questions.
 - [ ] Session todos for Phases 2–4 are populated.
-- [ ] A progress note has been added under `collab_progress/` and a new
-      entry has been prepended to `collab_progress/CHANGELOG.md` per
-      `collab_progress/PROTOCOL.md`.
+
+Do NOT write a `collab_progress/` progress note in this phase. That
+directory and its `PROTOCOL.md` are created by Phase 2
+(`scaffolding-repo`); Phase 1's only artifacts are `plan.md` and the
+session todo list.

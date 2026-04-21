@@ -1,9 +1,9 @@
 ---
 name: scaffolding-repo
 description: >-
-  Use when beginning Phase 2 of the Beam workflow: create the collab_progress/
-  directory structure, generate README.md from readme-template.json, and lay
-  down the minimal starter file structure for a new repository.
+  Use when `plan.md` exists at the repository root but either
+  `collab_progress/` or `README.md` is missing, or when the user asks to
+  scaffold a new repository for agent-driven development.
 ---
 
 # Scaffolding the Repository (Phase 2)
@@ -37,7 +37,7 @@ Determine the idiomatic file and folder structure for that stack.
 - Create a `.gitignore` tailored to the stack.
 - Create empty or minimal entry point files (e.g., `src/main.rs`, `index.js`).
 
-**<HARD-GATE: NO FEATURE CODE>**
+<HARD-GATE: NO FEATURE CODE>
 You are scaffolding, not implementing. Do NOT write any application logic,
 database schemas, or business features. Your job is to create the canvas,
 not paint the picture.
@@ -53,13 +53,22 @@ Parse `readme-template.json` and generate `README.md` at the repository root.
 
 ### 3. Bootstrap `collab_progress/`
 The collaboration progress tracker is how agents and humans communicate what
-has been done. You must install it exactly as configured.
+has been done. You must install it exactly as configured, but you must
+NOT clobber user notes on a resume.
+
 - Parse `collab_progress_config.json`.
-- Create the `collab_progress/` directory at the repository root.
-- Write the three files defined in the config (`CHANGELOG.md`, `PROTOCOL.md`,
-  and `README.md` inside `collab_progress/`), using the EXACT literal
-  string content provided in the `content` fields of the JSON. Do not
-  modify or truncate this content.
+- If `collab_progress/` does not exist, create it at the repository root.
+- For each of the three files defined in the config (`CHANGELOG.md`,
+  `PROTOCOL.md`, `README.md` inside `collab_progress/`):
+  - If the file is **absent or empty**, write it using the EXACT literal
+    string content provided in the `content` field of the JSON. Do not
+    modify or truncate that content.
+  - If the file is **present and non-empty**, leave it alone. A previous
+    Phase 2 run (or a human edit) already populated it; overwriting would
+    destroy user-authored notes or edits to `PROTOCOL.md`.
+- If `collab_progress/CHANGELOG.md` is already populated, treat this
+  invocation as a resume: do not re-initialise the tracker, just move on
+  to Step 4 and prepend a new entry per the existing protocol.
 
 ### 4. Write the First Progress Note
 Because you have just made a significant change to the repository, you must
@@ -94,7 +103,10 @@ comply with the `PROTOCOL.md` you just created.
 Before declaring Phase 2 complete, verify:
 - [ ] The core directory structure and base manifests exist.
 - [ ] `README.md` is created and follows the JSON template structure.
-- [ ] `collab_progress/` exists with its 3 core files matching the config exactly.
+- [ ] `collab_progress/` exists with its 3 core files matching the config
+      exactly (or pre-existing non-empty files were left intact on resume).
 - [ ] `collab_progress/repo-scaffold-<date>.md` exists.
-- [ ] `collab_progress/CHANGELOG.md` has a new entry at the top, formatted correctly with local time.
-- [ ] The session todo list is updated, prompting the user to start Phase 3 (`writing-agents-md`).
+- [ ] `collab_progress/CHANGELOG.md` has a new entry at the top, formatted
+      correctly with the user's local timezone.
+- [ ] The session todo list is updated, prompting the user to start Phase 3
+      (`writing-agents-md`).

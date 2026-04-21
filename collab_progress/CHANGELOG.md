@@ -30,6 +30,31 @@ Entry Template
 
 ---
 
+## [Fix]: Beam skills audit fixes (critical bugs, compliance, doc drift)
+- Date: 2026-04-21
+- Time (Local TZ): 22:06 IST
+- Branch/PR: main
+- Files Changed (high level):
+  `skills/eliciting-project-goals/SKILL.md`,
+  `skills/scaffolding-repo/SKILL.md`,
+  `skills/scaffolding-repo/collab_progress_config.json`,
+  `skills/writing-agents-md/SKILL.md` (full rewrite),
+  `skills/writing-technical-spec/SKILL.md`,
+  `skills/using-beam/SKILL.md` (full rewrite),
+  `AGENTS.md`, `README.md`, `docs/SPEC.md`
+- Details: See [skills-audit-fixes-21-04-2026.md](skills-audit-fixes-21-04-2026.md)
+- Verification: JSON parse OK; frontmatter triggers-only on all five
+  skills; line-length 80 on non-table prose; Phase-1 impossible
+  checklist item removed; Phase-3 now reads plan.md and walks
+  agents_config.json with a user-preferences step; Phase-4 IST
+  hardcode replaced; SPEC/SKILL contradiction on package manifests
+  resolved in favour of SKILL; all `assets/` paths removed. RED/GREEN
+  baseline deferred to a follow-up session per AGENTS.md testing
+  discipline.
+- Notes: Working tree left dirty for user review before commit.
+
+---
+
 ## [Implement]: Author using-beam SKILL.md (Master Orchestrator body)
 - Date: 2026-04-21
 - Time (IST): 21:35 IST

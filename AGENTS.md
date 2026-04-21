@@ -26,27 +26,27 @@ and the coding agents that load and execute them.
 ├── README.md
 ├── LICENSE
 ├── .markdownlint.json
-├── assets/                          # JSON templates for AGENTS.md and
-│                                    # collab_progress generation
 ├── collab_progress/                 # Progress notes, CHANGELOG, PROTOCOL
 ├── docs/
 │   └── SPEC.md
 └── skills/
     ├── using-beam/
-    │   └── SKILL.md                 # Master bootstrap skill;
-    │                                # triggers on new-project intent
+    │   └── SKILL.md                    # Master bootstrap skill;
+    │                                   # triggers on new-project intent
     ├── eliciting-project-goals/
-    │   └── SKILL.md                 # Phase 1: Q&A → plan.md + todos
+    │   └── SKILL.md                    # Phase 1: Q&A → plan.md + todos
     ├── scaffolding-repo/
-    │   ├── SKILL.md                 # Phase 2: collab_progress +
-    │   │                            # starter structure + README.md
-    │   └── readme-template.json     # README.md section structure
+    │   ├── SKILL.md                    # Phase 2: collab_progress +
+    │   │                               # starter structure + README.md
+    │   ├── readme-template.json        # README.md section structure
+    │   └── collab_progress_config.json # collab_progress/ file contents
     ├── writing-agents-md/
-    │   └── SKILL.md                 # Phase 3: fills AGENTS.md from
-    │                                # assets/agents_config.json
+    │   ├── SKILL.md                    # Phase 3: walks agents_config.json
+    │   │                               # → AGENTS.md
+    │   └── agents_config.json          # AGENTS.md section structure
     └── writing-technical-spec/
-        ├── SKILL.md                 # Phase 4: web research + SPEC.md
-        └── spec-template.json       # SPEC.md section structure
+        ├── SKILL.md                    # Phase 4: web research + SPEC.md
+        └── spec-template.json          # SPEC.md section structure
 ```
 
 ## Build, Test, and Development Commands
@@ -83,8 +83,11 @@ SKILL frontmatter, not code.
   (`eliciting-project-goals`, `writing-technical-spec`).
 - **Template / reference files inside a skill:** lowercase with hyphens
   (`readme-template.json`, `spec-template.json`).
-- **JSON templates in `assets/`:** stable schema; document any field
-  changes in `collab_progress/`.
+- **JSON templates alongside their skill:** each template
+  (`readme-template.json`, `collab_progress_config.json`,
+  `agents_config.json`, `spec-template.json`) lives in its owning skill's
+  directory. Schemas are stable; document any field changes in
+  `collab_progress/`.
 
 ## Testing Guidelines
 

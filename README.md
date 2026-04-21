@@ -1,14 +1,12 @@
 # Beam
 
-**Beam** is a [superpowers][sp]-style skills plugin that bootstraps a new
+**Beam** is a skills package that bootstraps a new
 repository for **agent-driven development (ADD)**. It is a directory of
 cooperating `SKILL.md` files that any modern coding agent — Claude Code, pi,
-Codex CLI, Gemini CLI — can load and follow.
+Codex CLI, Gemini CLI, etc — can load and follow.
 
 There is no binary, no build step, and no language runtime. The entire
 plugin is Markdown and JSON.
-
-[sp]: https://github.com/obra/superpowers
 
 ## What it does
 
@@ -19,14 +17,17 @@ four-phase workflow:
 1. **Goal elicitation.** A short Q&A dialogue with you. The agent writes a
    `plan.md` and seeds session todos for the remaining phases.
 2. **Repo scaffolding.** The agent creates `collab_progress/` (with
-   `PROTOCOL.md`, `CHANGELOG.md`, and a README) and a minimal starter
-   directory structure reasoned from your stated goals.
-3. **README & AGENTS.md.** The agent fills the project `README.md` and
-   `AGENTS.md` from the templates in `assets/`, using what it learned in
-   phase 1.
+   `PROTOCOL.md`, `CHANGELOG.md`, and a README), a minimal starter
+   directory tree reasoned from your stated stack, and the project
+   `README.md` from `skills/scaffolding-repo/readme-template.json`.
+3. **AGENTS.md.** The agent walks
+   `skills/writing-agents-md/agents_config.json` and synthesises the
+   project's contributor guide from `plan.md`, then asks you for any
+   additional preferences to capture.
 4. **Technical spec.** The agent uses its `web_search` tool to gather
    current documentation on the project's core frameworks, then authors a
-   focused `docs/SPEC.md`.
+   focused `docs/SPEC.md` from
+   `skills/writing-technical-spec/spec-template.json`.
 
 The output is an _agent-legible_ repository: structure, conventions, and
 intent are all captured in version-controlled artifacts before any

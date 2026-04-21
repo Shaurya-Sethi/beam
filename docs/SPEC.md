@@ -68,33 +68,45 @@ bootstrap.
 ### Phase 2 — Repo scaffolding
 
 - **Skill:** `scaffolding-repo`
-- **Trigger:** "Use when `plan.md` exists and the repository has no
-  `collab_progress/` directory yet."
-- **Tools used:** `Bash` (mkdir), `Write`.
+- **Trigger:** "Use when `plan.md` exists and either `collab_progress/`
+  or `README.md` is missing."
+- **Tools used:** `Bash` (mkdir), `Read` (templates), `Write`.
 - **Output:**
   - `collab_progress/PROTOCOL.md`, `CHANGELOG.md`, `README.md`
-    (rendered from `assets/collab_progress_config.json`).
-  - A minimal starter directory tree reasoned from `plan.md`. The
-    skill consults `plan.md` for language and tech stack, then
-    creates only the directories the user will need to start writing
-    code (e.g. `src/`, `tests/`, `docs/`). It does **not** create
-    language-specific manifest files; that is the user's first coding
-    task, not Beam's.
-- **Open question (OQ-2):** whether this phase uses a fixed minimal
-  starter structure (`src/`, `tests/`, `docs/`) or reasons one from
-  scratch each time. See §8.
+    (rendered from
+    `skills/scaffolding-repo/collab_progress_config.json`). On a resume
+    where `CHANGELOG.md` is already populated, pre-existing non-empty
+    files are left intact and only missing files are written.
+  - A minimal starter directory tree reasoned from `plan.md`. The skill
+    consults `plan.md` for language and tech stack, then creates the
+    directories the user will need to start writing code (typically
+    `src/`, `tests/`, `docs/`).
+  - The project `README.md` at the repository root, rendered from
+    `skills/scaffolding-repo/readme-template.json`.
+  - Language-specific package manifests reasoned from `plan.md` (for
+    example `package.json`, `requirements.txt`, `Cargo.toml`, `go.mod`)
+    with the project name and minimal configuration — enough to
+    `install` / `build` a no-op. No application logic is written.
 
-### Phase 3 — `README.md` and `AGENTS.md`
+### Phase 3 — `AGENTS.md`
 
 - **Skill:** `writing-agents-md`
-- **Trigger:** "Use when `collab_progress/` exists and either
-  `README.md` or `AGENTS.md` is missing or empty."
-- **Tools used:** `Read` (templates and `plan.md`), `Write`.
+- **Trigger:** "Use when `plan.md` and `collab_progress/` exist and
+  `AGENTS.md` is missing or empty."
+- **Tools used:** `Read` (template and `plan.md`), `Write`, the agent's
+  conversational turn (to solicit user preferences).
 - **Output:**
-  - `README.md` filled from `skills/writing-agents-md/readme-template.md`.
-  - `AGENTS.md` rendered from `assets/agents_config.json`, with
-    `requirements`-mode sections written to match the project type
-    captured in `plan.md`, and `exact`-mode sections copied verbatim.
+  - `AGENTS.md` at the repository root, rendered from
+    `skills/writing-agents-md/agents_config.json`. `requirements`-mode
+    sections are synthesised from `plan.md` plus repository context;
+    `exact`-mode sections are copied verbatim. The
+    Documentation & Knowledge Sources section may be augmented with
+    project-specific non-library references (domain specs, methodology
+    notes) after the verbatim block.
+  - A recorded decision from the user on any additional preferences or
+    special instructions they want captured, integrated into the file
+    before Phase 3 is declared complete.
+- Phase 3 does **not** write `README.md`; that is Phase 2's responsibility.
 
 ### Phase 4 — Technical spec
 
@@ -104,13 +116,14 @@ bootstrap.
 - **Tools used:** `web_search` (mandatory — must not be skipped), `Read`
   for `plan.md`, `Write`.
 - **Output:** `docs/SPEC.md` following the structure in
-  `skills/writing-technical-spec/spec-template.md`. The skill instructs
+  `skills/writing-technical-spec/spec-template.json`. The skill instructs
   the agent to:
   1. Read `plan.md` to identify the core frameworks and constraints.
   2. Run `web_search` for each core framework to confirm current
      versions, idiomatic patterns, and recently changed APIs.
   3. Synthesize findings into a focused spec — *map, not encyclopedia*
-     — typically 200–400 lines.
+     — targeting the 600–1200-word range declared in
+     `spec-template.json`'s `document_info.target_word_count`.
 
 ## 4. Skill Structure & Orchestration
 
@@ -169,21 +182,26 @@ tags; agents pick up changes on the next session start.
 
 ## 6. Template Assets
 
-Two JSON files in `assets/` drive phase 2 and phase 3:
+Beam does **not** use a top-level `assets/` directory. Each JSON
+template lives alongside the skill that consumes it:
 
-- **`assets/agents_config.json`** — the section list and rendering
-  modes (`exact` vs. `requirements`) for the generated `AGENTS.md`.
-  `exact`-mode sections are copied verbatim; `requirements`-mode
-  sections are filled by the agent using `plan.md` plus the section's
-  content requirements as a prompt.
-- **`assets/collab_progress_config.json`** — the section list and
-  exact content for `collab_progress/PROTOCOL.md`,
+- **`skills/scaffolding-repo/readme-template.json`** — section list and
+  content requirements for the project `README.md` that phase 2 writes.
+- **`skills/scaffolding-repo/collab_progress_config.json`** — directory
+  structure and verbatim file contents for `collab_progress/PROTOCOL.md`,
   `collab_progress/CHANGELOG.md`, and `collab_progress/README.md`.
+- **`skills/writing-agents-md/agents_config.json`** — section list and
+  rendering modes (`exact` vs. `requirements`) for the generated
+  `AGENTS.md`. `exact`-mode sections are copied verbatim;
+  `requirements`-mode sections are filled from `plan.md` plus the
+  section's content requirements.
+- **`skills/writing-technical-spec/spec-template.json`** — mandatory
+  section skeleton and `target_word_count` for `docs/SPEC.md`.
 
-These templates are consumed by phase 2 and phase 3 skills via `Read`,
-not by any code. The templates are intentionally JSON (not Markdown)
-so the agent has machine-readable structure to walk; the actual
-generated artifacts are Markdown.
+These templates are consumed by the phase skills via `Read`, not by any
+code. They are intentionally JSON (not Markdown) so the agent has
+machine-readable structure to walk; the generated artifacts are
+Markdown.
 
 ## 7. Testing Approach
 
@@ -207,10 +225,17 @@ transcripts, post-change transcripts, rationalization tables) live in
 | ID | Question / item | Notes |
 | -- | --------------- | ----- |
 | OQ-1 | Exact wording of `using-beam`'s `description` | Needs baseline runs to tune recall vs. precision |
-| OQ-2 | Phase 2 — fixed minimal starter structure or reason from scratch each time? | Fixed is more predictable; reasoned adapts better to unusual stacks |
-| OQ-3 | `spec-template.md` content | The section list and instructions phase 4 hands the agent. Should be derived from this very file's structure |
 | OQ-4 | Whether phase 3 should also create a starter `LICENSE` | Currently out of scope; user picks license manually |
 | OQ-5 | Pi-package manifest (`package.json` with `pi` key) for `pi install` | Adds optional convenience without affecting other agents |
 | OQ-6 | How to detect "this is a fresh repo" reliably across agents | Master skill currently delegates to the agent's filesystem tools |
+
+**Resolved:**
+
+- **OQ-2** (Phase 2 starter structure) — resolved: phase 2 reasons the
+  directory tree from `plan.md` and also creates language-specific
+  package manifests. See §3 Phase 2.
+- **OQ-3** (spec template format) — resolved: the template is
+  `skills/writing-technical-spec/spec-template.json`, a JSON skeleton the
+  agent walks. See §6.
 
 *End of Beam Technical Specification v0.1.0-draft*
