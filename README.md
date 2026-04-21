@@ -35,31 +35,47 @@ application code is written.
 
 ## Installation
 
-Beam is a directory of skills. Install it by cloning (or symlinking) into
-your agent's skills directory.
+You can install Beam directly into your agent's skills directory using either of the popular skill package managers. Both tools automatically extract only the necessary `SKILL.md` files and safely ignore the rest of the repository.
 
-**Codex CLI / pi**
-
-```bash
-git clone https://github.com/Shaurya-Sethi/beam ~/.agents/skills/beam
-# or, to keep the source elsewhere:
-ln -s /path/to/beam/skills ~/.agents/skills/beam
-```
-
-**Claude Code**
+**Using Vercel's `skills` CLI:**
 
 ```bash
-git clone https://github.com/Shaurya-Sethi/beam ~/.claude/skills/beam
+# Install globally for all projects
+npx skills add Shaurya-Sethi/beam -g
+
+# Or install locally for the current project
+npx skills add Shaurya-Sethi/beam
 ```
 
-**Future (canonical):**
+**Using `openskills`:**
 
 ```bash
-pi install git:github.com/Shaurya-Sethi/beam
+# Install universally (~/.agents/skills)
+npx openskills install Shaurya-Sethi/beam --universal
+
+# Or install locally for a specific agent
+npx openskills install Shaurya-Sethi/beam
 ```
 
-The `pi install` path will land once Beam is published; until then the
-clone-or-symlink approach works in every supported agent.
+**Manual Installation (Fallback)**
+
+If you prefer not to use a package manager, you can clone the repository and symlink the `skills/` directory manually:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Shaurya-Sethi/beam.git
+cd beam
+
+# 2. Symlink into your agent's skills directory
+# For pi:
+ln -s "$PWD/skills" ~/.pi/agent/skills/beam
+
+# For Codex CLI / Universal:
+ln -s "$PWD/skills" ~/.agents/skills/beam
+
+# For Claude Code:
+ln -s "$PWD/skills" ~/.claude/skills/beam
+```
 
 ## Usage
 
