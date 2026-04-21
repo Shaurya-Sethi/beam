@@ -28,3 +28,68 @@ Entry Template
 - Notes: <optional follow-ups/known issues>
 ```
 
+---
+
+## [Implement]: Trim README & SPEC JSON templates; author writing-technical-spec SKILL.md
+- Date: 2026-04-21
+- Time (IST): 19:30 IST
+- Branch/PR: main
+- Files Changed (high level):
+  `skills/scaffolding-repo/readme-template.json` (6 → 5 sections),
+  `skills/writing-technical-spec/spec-template.json` (7 → 4 sections),
+  `skills/writing-technical-spec/SKILL.md` (stub → full body),
+  `collab_progress/`
+- Details: See [implement-template-design-plan-21-04-2026.md](implement-template-design-plan-21-04-2026.md)
+- Verification: JSON parse OK and section counts confirmed (5 / 4);
+  all non-table lines in new `SKILL.md` ≤80 chars; file is 210 lines
+  (under the 500-line spec ceiling); `ReadLints` clean. RED/GREEN
+  agent-behaviour baseline NOT yet run — deferred to a follow-up per
+  `AGENTS.md` testing discipline.
+- Notes: `skills/scaffolding-repo/SKILL.md` and the remaining three
+  skill stubs (`using-beam`, `eliciting-project-goals`, `writing-agents-md`)
+  are still TODO stubs; out of scope for this session. Working tree
+  left dirty for user review.
+
+---
+
+## [Plan]: Research & plan minimal skeletons for README and SPEC templates
+- Date: 2026-04-21
+- Time (IST): 19:23 IST
+- Branch/PR: main
+- Files Changed (high level): `docs/template-design-plan.md` (new),
+  `collab_progress/` (this note + changelog)
+- Details: See [template-design-plan-21-04-2026.md](template-design-plan-21-04-2026.md)
+- Verification: plan-only session; no JSON templates or SKILL.md files
+  edited, so no agent-behaviour change to RED/GREEN yet. Plan file
+  checked against its own section list (research, reasoning, proposed
+  minimal skeletons, SKILL.md guidance, pattern recommendation,
+  follow-up todos, sources).
+- Notes: follow-up todos in plan §6 include authoring the
+  `writing-technical-spec/SKILL.md` body, not just trimming the JSON.
+  Working tree left dirty for user review.
+
+---
+
+## [Refactor]: Convert template files from .md to .json
+- Date: 2026-04-21
+- Time (IST): 18:31 IST
+- Branch/PR: main
+- Files Changed (high level): `skills/scaffolding-repo/`, `skills/writing-technical-spec/`, `AGENTS.md`
+- Details: See [convert-templates-to-json-21-04-2026.md](convert-templates-to-json-21-04-2026.md)
+- Verification: `grep` confirmed all references use `.json`; `find` confirmed
+  no `.md` template files remain
+- Notes: awaiting user review before commit
+
+---
+
+## [Scaffold]: Create skills/ tree and update AGENTS.md
+- Date: 2026-04-21
+- Time (IST): 18:31 IST
+- Branch/PR: main
+- Files Changed (high level): `AGENTS.md`, `skills/` (all five skill dirs)
+- Details: See [scaffold-skills-tree-21-04-2026.md](scaffold-skills-tree-21-04-2026.md)
+- Verification: file-tree checked with `find`; `grep` confirmed no
+  "aspirational" remaining; `readme-template.md` confirmed under
+  `scaffolding-repo/`
+- Notes: skill bodies are stubs; awaiting user review before commit
+
